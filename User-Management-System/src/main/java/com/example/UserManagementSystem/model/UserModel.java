@@ -25,8 +25,8 @@ public class UserModel {
     private String userName;
     @Email
     private String email;
-    @Size(min=10,max=12)
-    @Pattern(regexp = "^[0-9]+$")
+    @Size(min=12,max=12)
+    @Pattern(regexp = "^[91][0-9]+$")
     private String phNumber;
     @JsonFormat(pattern = "MM-dd-yyyy")
     private LocalDate date;
