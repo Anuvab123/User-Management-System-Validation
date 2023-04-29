@@ -1,61 +1,33 @@
 package com.example.UserManagementSystem.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Range;
 
+import java.time.LocalDate;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserModel {
+    @Range(min=1)
     private int userId;
+    @NotNull
     private String name;
+    @NotEmpty
     private String userName;
-    private String address;
+    @Email
+    private String email;
+    @Size(min=10,max=12)
+    @Pattern(regexp = "^[0-9]+$")
     private String phNumber;
-
-    public UserModel(int userId, String name, String userName, String address, String phNumber) {
-        this.userId = userId;
-        this.name = name;
-        this.userName = userName;
-        this.address = address;
-        this.phNumber = phNumber;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhNumber() {
-        return phNumber;
-    }
-
-    public void setPhNumber(String phNumber) {
-        this.phNumber = phNumber;
-    }
+    @JsonFormat(pattern = "MM-dd-yyyy")
+    private LocalDate date;
 }

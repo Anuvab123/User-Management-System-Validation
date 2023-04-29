@@ -41,12 +41,12 @@ public class UserService {
         return "id does not exist";
     }
 
-    public String update(String id, String address) {
+    public String update(String id, String email) {
         List<UserModel> users=userDao.getUsers();
         for(UserModel user:users){
             if(user.getUserId()==Integer.parseInt(id)){
                 users.remove(user);
-                user.setAddress(address);
+                user.setEmail(email);
                 users.add(user);
                 return "updated successfully";
             }
